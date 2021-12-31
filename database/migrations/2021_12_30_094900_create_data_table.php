@@ -18,7 +18,7 @@ class CreateDataTable extends Migration
             $table->id();
             $table->foreignId('area_id')->nullable()->constrained()->onDelete('set null');
             $table->string('name');
-            $table->string('age');
+            $table->integer('age');
             $table->string('sex');
             $table->string('lga');
             $table->dateTime('date_occurred')->default(Carbon::now()->subYears(random_int(2, 15)));

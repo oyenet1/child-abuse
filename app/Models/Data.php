@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Data extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable  = ['name', 'age', 'sex', 'area_id', 'lga', 'date_occurred'];
 
 
+
+    protected $hidden = ['created_at', 'updated_at'];
+    
     public function area(){
         return $this->belongsTo(Area::class);
     }

@@ -1,3 +1,103 @@
-<div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+<div bg-gray-200>
+  <div class="w-full my-8 bg-gray-200">
+    <form wire:submit.prevent="save" class="w-ful row overflow-y-auto" enctype="multipart/form-data">
+      <div class="p-3 w-full grid grid-cols-1 space-x-2 lg:grid-cols-2 text-gray-500  font-bold items-center align-middle">
+        <div class="mb-3">
+          <label for="" class="mb-1 font-normal text-gray-600 text-sm">Name</label>
+          <input type="text" wire:model.defer="name" class="p-2 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium " placeholder="name...">
+          @error('name')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label for="" class="mb-1 font-normal text-gray-600 text-sm">Age</label>
+          <input type="text" wire:model.defer="age" class="p-2 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium " placeholder="name...">
+          @error('age')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label for="" class="mb-1 font-normal text-gray-600 text-sm">Sex</label>
+          <select wire:model.defer="sex" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
+            <option value="select">Select Sex</option>
+            @foreach (['male', 'female'] as $sex)
+            <option value="{{ $sex }}" class="capitalize">{{ $sex }}</option>
+            @endforeach
+          </select>
+          @error('sex')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+
+        <div class="mb-3">
+          <label for="" class="capitalize mb-1 font-normal text-gray-600 text-sm">State of Origin</label>
+          <select wire:model.defer="area_id" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
+            <option value="select">Select State</option>
+            @foreach ($states as $state)
+            <option value={{ $state->id }} class="capitalize">{{ $state->state }}</option>
+            @endforeach
+          </select>
+          @error('area_id')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label for="" class="mb-1 font-normal text-gray-600 text-sm">Local Government</label>
+          <input type="text" wire:model.defer="lga" class="px-2 py-1 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium ">
+          @error('lga')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label for="" class="font-normal mb-1">Occurrence Date</label>
+          <input type="date" wire:model.defer="date_occurred" class="px-2 py-1 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium " placeholder="">
+          @error('date_occurred')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3 my-auto align-middle text-right lg:col-span-2">
+          <button type="submit" class="rounded align-middle border-2 border-purple-500 bg-purple-600 hover:opacity-80 text-white py-2 text-center px-3 text-sm  font-medium">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="w-full flex item-center justify-between px-2">
+    <select wire:model="perPage" id="" class="rounded font-medium">
+      <option value="10" class="">10</option>
+      <option value="25" class="">25</option>
+      <option value="50" class="">50</option>
+      <option value="100" class="">100</option>
+    </select>
+    <input type="text" wire:model.debounce.300="search" class="px-2 py-1 rounded-full w-52 shadow placeholder-gray-500 italic text-center" placeholder="search by name only...">
+  </div>
+  <table class="w-full table my-4">
+    <thead class="">
+      <tr class="w-full p-2 bg-purple-500 text-white">
+        <th class="p-2 text-left">No</th>
+        <th class="p-2 text-left">Name</th>
+        <th class="p-2 text-left">Age</th>
+        <th class="p-2 text-left">State</th>
+        <th class="p-2 text-left">LGA</th>
+        <th class="p-2 text-left">Date</th>
+        <th class="p-2 text-left">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($cases as $item)
+      <tr class="p-2 capitalize border odd:bg-gray-100">
+        <td class="p-2">{{ $loop->iteration }}</td>
+        <td class="p-2">{{ $item->name }}</td>
+        <td class="p-2">{{ $item->age }}</td>
+        <td class="p-2">{{ $item->area->state }}</td>
+        <td class="p-2">{{ $item->lga }}</td>
+        <td class="p-2">{{ formatDate($item->date_occurred) }}</td>
+        <td class="p-2">
+          <button wire:click="confirmDelete({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-red-500 hover:bg-red-700 text-white">
+            Delete
+          </button>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
 </div>

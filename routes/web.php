@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $data  = ['male', 'female'];
-    return view('welcome', compact(['data']));
+    $colors = '100, 250, 200, .5';
+    $options = [
+        'chart_title' => 'Child-Abuse Case by State',
+        'report_type' => 'group_by_relationship',
+        'model' => 'App\Models\Data',
+        'relationship_name' => 'area',
+        'group_by_field' => 'state',
+        'chart_type' => 'bar',
+        // 'chart_color' => "30, 40, 200, .5",
+    ];
+    $chart = new LaravelChart($options);
+    return view('welcome', compact(['data', 'chart']));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
