@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaseController;
 use Illuminate\Support\Facades\Route;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -29,6 +30,8 @@ Route::get('/', function () {
     $chart = new LaravelChart($options);
     return view('welcome', compact(['data', 'chart']));
 });
+
+Route::get('/cases/{data:name}', [CaseController::class, 'show']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

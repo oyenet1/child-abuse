@@ -45,24 +45,22 @@
 
     {{-- datas charts --}}
     <div class="w-full max-w-7xl p-8 shadow mx-auto overflow-x-auto my-4">
-      <h1 class="font-semibold text-2xl uppercase ">{{ $chart->options['chart_title'] }}</h1>
-      {!! $chart->renderHtml() !!}
+      <h1 class="font-bold text-2xl uppercase text-red-500">{{ $data->name }} <span class="text-black"> - Case Summary </span> </h1>
     </div>
     <div class="w-full max-w-7xl p-8 shadow mx-auto my-4">
-      {{-- <livewire:records> --}}
-      @livewire('cases')
+      
     </div>
   </div>
 
   <!-- Scripts -->
   @livewireScripts
-  @powerGridScripts
+  {{-- @powerGridScripts
 
 
 
 
-  {{-- laravel charts --}}
+  laravel charts
   {!! $chart->renderChartJsLibrary() !!}
-  {!! $chart->renderJs() !!}
+  {!! $chart->renderJs() !!} --}}
 </body>
 </html>

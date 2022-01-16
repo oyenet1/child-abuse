@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 class Cases extends Component
 {
-    public $search, $area_id, $name, $age, $sex, $lga, $date_occurred, $perPage = 10;
+    public $search, $area_id, $name, $age, $sex, $type, $summary, $status, $lga, $date_occurred, $perPage = 10;
     protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
@@ -29,6 +29,9 @@ class Cases extends Component
         $this->area_id = null;
         $this->date_occurred = null;
         $this->lga = null;
+        $this->status = null;
+        $this->summary = null;
+        $this->type = null;
     }
 
     public function save()
@@ -41,6 +44,9 @@ class Cases extends Component
                 'date_occurred' => ['required', 'date', 'before:' . Carbon::tomorrow()],
                 'lga' => 'required',
                 'sex' => 'required|not_in:select',
+                'summary' => 'required|min:10',
+                'type' => 'required|not_in:select',
+                'status' => 'required|not_in:select',
             ]
         );
 
@@ -60,7 +66,7 @@ class Cases extends Component
     }
     public function confirmDelete($id)
     {
-
+       
         $cases = Data::findOrFail($id);
 
         $this->delete = $id;
@@ -88,9 +94,9 @@ class Cases extends Component
 
     public function render()
     {
-        $search = '%'. $this->search .'%';
+        $search = '%' . $this->search . '%';
         $states = Area::latest()->orderBy('state', 'asc')->get();
-        $cases = Data::with('area')->where('name', 'LIKE', $search)->paginate($this->perPage);
+        $cases = Data::with('area')->where('name', 'LIKE', $search)->orWhere('status', 'LIKE', $search)->orWhere('type', 'LIKE', $search)->paginate($this->perPage);
         return view('livewire.cases', compact(['cases', 'states']));
     }
 }

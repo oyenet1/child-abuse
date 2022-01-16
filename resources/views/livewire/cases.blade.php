@@ -1,4 +1,5 @@
 <div bg-gray-200>
+  @auth
   <div class="w-full my-8 bg-gray-200">
     <form wire:submit.prevent="save" class="w-ful row overflow-y-auto" enctype="multipart/form-data">
       <div class="p-3 w-full grid grid-cols-1 space-x-2 lg:grid-cols-2 text-gray-500  font-bold items-center align-middle">
@@ -28,7 +29,30 @@
           <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
           @enderror
         </div>
-
+        <div class="mb-3">
+          <label for="" class="mb-1 font-normal text-gray-600 text-sm">Case Status</label>
+          <select wire:model.defer="status" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
+            <option value="select">Select Case Status</option>
+            @foreach (['verify', 'unverify'] as $sex)
+            <option value="{{ $sex }}" class="capitalize">{{ $sex }}</option>
+            @endforeach
+          </select>
+          @error('status')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label for="" class="capitalize mb-1 font-normal text-gray-600 text-sm">Case Type</label>
+          <select wire:model.defer="type" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
+            <option value="select">Select Case Type</option>
+            @foreach (['Physical', 'Sexual', 'Emotional Neglect'] as $state)
+            <option value={{ $state }} class="capitalize">{{ $state }}</option>
+            @endforeach
+          </select>
+          @error('type')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
         <div class="mb-3">
           <label for="" class="capitalize mb-1 font-normal text-gray-600 text-sm">State of Origin</label>
           <select wire:model.defer="area_id" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
@@ -55,12 +79,20 @@
           <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
           @enderror
         </div>
+        <div class="mb-3 lg:col-span-2 ">
+          <label for="" class="font-normal mb-1">Summary</label>
+          <textarea type="date" wire:model.defer="summary" rows="10" class="px-2 py-1 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium "></textarea>
+          @error('summary')
+          <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
+          @enderror
+        </div>
         <div class="mb-3 my-auto align-middle text-right lg:col-span-2">
           <button type="submit" class="rounded align-middle border-2 border-purple-500 bg-purple-600 hover:opacity-80 text-white py-2 text-center px-3 text-sm  font-medium">Save</button>
         </div>
       </div>
     </form>
   </div>
+  @endauth
   <div class="w-full flex item-center justify-between px-2">
     <select wire:model="perPage" id="" class="rounded font-medium">
       <option value="10" class="">10</option>
@@ -78,6 +110,8 @@
         <th class="p-2 text-left">Age</th>
         <th class="p-2 text-left">State</th>
         <th class="p-2 text-left">LGA</th>
+        <th class="p-2 text-left">Status</th>
+        <th class="p-2 text-left">Type</th>
         <th class="p-2 text-left">Date</th>
         <th class="p-2 text-left">Action</th>
       </tr>
@@ -90,14 +124,25 @@
         <td class="p-2">{{ $item->age }}</td>
         <td class="p-2">{{ $item->area->state }}</td>
         <td class="p-2">{{ $item->lga }}</td>
+        <td class="p-2">{{ $item->status }}</td>
+        <td class="p-2">{{ $item->type }}</td>
         <td class="p-2">{{ formatDate($item->date_occurred) }}</td>
         <td class="p-2">
+          @auth
+          <button wire:click="verify({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-green-500 hover:bg-green-700 text-white">
+            Verify
+          </button>
           <button wire:click="confirmDelete({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-red-500 hover:bg-red-700 text-white">
             Delete
           </button>
+          @endauth
+          <a href="/cases/{{ $item->name }}" class="rounded px-2 py-1 text-sm bg-blue-500 hover:bg-blue-700 text-white">
+            View Details
+          </a>
         </td>
       </tr>
       @endforeach
     </tbody>
   </table>
+  <div class="text-center w-4/5 mx-auto">{{ $cases->links() }}</div>
 </div>
