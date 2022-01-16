@@ -15,6 +15,8 @@ class CreateDataTable extends Migration
      */
     public ?array $type = ['Physical', 'Sexual', 'Emotional Neglect'];
     public ?array $status = ['verified', 'unverified'];
+
+    public ?string $summary = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, soluta consectetur officia, totam quae culpa nisi dolorem hic, corporis vitae perferendis enim. Maxime nobis pariatur, nulla vitae nihil itaque laudantium!';
     public function up()
     {
         Schema::create('data', function (Blueprint $table) {
@@ -26,7 +28,7 @@ class CreateDataTable extends Migration
             $table->string('type')->default($this->type[array_rand($this->type)]);
             $table->string('status')->default($this->status[array_rand($this->status)]);
             $table->string('lga');
-            $table->longText('summary')->default(Str::random(500));
+            $table->longText('summary')->default($this->summary);
             $table->dateTime('date_occurred')->default(Carbon::now()->subYears(random_int(2, 15)));
             $table->timestamps();
         });
