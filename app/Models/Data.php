@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Data extends Model
 {
     use HasFactory;
-    protected $fillable  = ['name', 'age', 'sex', 'area_id', 'lga', 'date_occurred'];
+    protected $fillable  = ['name', 'age', 'sex', 'area_id', 'lga', 'date_occurred', 'summary', 'type', 'status'];
 
 
 

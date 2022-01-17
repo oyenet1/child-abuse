@@ -49,7 +49,7 @@ class Cases extends Component
                 'status' => 'required|not_in:select',
             ]
         );
-
+// dd($data);
         $saved = Data::create($data);
 
 

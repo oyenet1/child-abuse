@@ -28,7 +28,7 @@ class CreateDataTable extends Migration
             $table->string('type')->default($this->type[array_rand($this->type)]);
             $table->string('status')->default($this->status[array_rand($this->status)]);
             $table->string('lga');
-            $table->longText('summary')->default($this->summary);
+            $table->text('summary')->nullable();
             $table->dateTime('date_occurred')->default(Carbon::now()->subYears(random_int(2, 15)));
             $table->timestamps();
         });

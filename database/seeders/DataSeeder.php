@@ -62,6 +62,8 @@ class DataSeeder extends Seeder
         return $data;
     }
 
+    public ?string $summary = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, soluta consectetur officia, totam quae culpa nisi dolorem hic, corporis vitae perferendis enim. Maxime nobis pariatur, nulla vitae nihil itaque laudantium!';
+
     public function run()
     {
         $sex = ['male', 'female'];
@@ -73,6 +75,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Abia[array_rand($this->Abia)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -84,6 +87,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Adamawa[array_rand($this->Adamawa)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -95,6 +99,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Anambra[array_rand($this->Anambra)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -106,6 +111,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->AkwaIbom[array_rand($this->AkwaIbom)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -117,6 +123,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Bauchi[array_rand($this->Bauchi)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -128,6 +135,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Bayelsa[array_rand($this->Bayelsa)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -139,6 +147,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Benue[array_rand($this->Benue)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -150,6 +159,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Borno[array_rand($this->Borno)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -161,6 +171,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->CrossRiver[array_rand($this->CrossRiver)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(2, 60))
             ]);
@@ -172,6 +183,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Delta[array_rand($this->Delta)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 60))
             ]);
@@ -183,6 +195,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Ebonyi[array_rand($this->Ebonyi)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 60))
             ]);
@@ -194,6 +207,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Enugu[array_rand($this->Enugu)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 60))
             ]);
@@ -205,6 +219,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Edo[array_rand($this->Edo)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 20))
             ]);
@@ -216,6 +231,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Ekiti[array_rand($this->Ekiti)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -227,6 +243,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->FCT[array_rand($this->FCT)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -238,6 +255,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Gombe[array_rand($this->Gombe)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -249,6 +267,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Imo[array_rand($this->Imo)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -260,6 +279,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Jigawa[array_rand($this->Jigawa)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -271,6 +291,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Kaduna[array_rand($this->Kaduna)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -282,6 +303,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Kano[array_rand($this->Kano)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -293,6 +315,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Katsina[array_rand($this->Katsina)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -304,6 +327,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Kebbi[array_rand($this->Kebbi)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(3, 20))
             ]);
@@ -315,6 +339,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Kogi[array_rand($this->Kogi)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -326,6 +351,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Kwara[array_rand($this->Kwara)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -337,6 +363,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Lagos[array_rand($this->Lagos)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -348,6 +375,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Nasarawa[array_rand($this->Nasarawa)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -359,6 +387,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Niger[array_rand($this->Niger)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -370,6 +399,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Ogun[array_rand($this->Ogun)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -381,6 +411,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Ondo[array_rand($this->Ondo)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -392,6 +423,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Osun[array_rand($this->Osun)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -403,6 +435,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Oyo[array_rand($this->Oyo)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -414,6 +447,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Plateau[array_rand($this->Plateau)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -425,6 +459,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Rivers[array_rand($this->Rivers)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -436,6 +471,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Sokoto[array_rand($this->Sokoto)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -447,6 +483,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Taraba[array_rand($this->Taraba)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -458,6 +495,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Yobe[array_rand($this->Yobe)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
@@ -469,6 +507,7 @@ class DataSeeder extends Seeder
                 'name' => $faker->firstName . " " . $faker->lastName,
                 'age' => random_int(1, 17),
                 'sex' => $sex[array_rand($sex)],
+                'summary' => $this->summary,
                 'lga' => $this->clean($this->Zamfara[array_rand($this->Zamfara)]),
                 'date_occurred' => Carbon::now()->subYears(random_int(1, 30))
             ]);
