@@ -43,12 +43,7 @@
         </div>
         <div class="mb-3">
           <label for="" class="capitalize mb-1 font-normal text-gray-600 text-sm">Case Type</label>
-          <select wire:model.defer="type" class="px-2 py-2 text-sm rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-semibold">
-            <option value="select">Select Case Type</option>
-            @foreach (['Physical', 'Sexual', 'Emotional Neglect'] as $state)
-            <option value={{ $state }} class="capitalize">{{ $state }}</option>
-            @endforeach
-          </select>
+          <input type="text" wire:model.defer="type" class="px-2 py-1 rounded focus-within: focus:outline-none focus:border-purple-600 w-full border-2 placeholder-gray-400 font-medium ">
           @error('type')
           <span class="text-xs text-red-600 font-normal">{{ $message }}</span>
           @enderror
