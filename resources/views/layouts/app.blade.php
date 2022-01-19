@@ -71,6 +71,26 @@
             });
           });
       
+          window.addEventListener('swal:confirmVerify', event => {
+            Swal.fire({
+              title: 'Are you sure that the cases is verify?'
+              , text: "You won\'t be able to revert this!"
+              , icon: 'warning'
+              , showCancelButton: true
+              , cancelButtonColor: '#f11'
+              , confirmButtonText: 'Yes Confirm it'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Livewire.emit('verify');
+                // Swal.fire(
+                //   'Deleted!'
+                //   , 'Your file has been deleted'
+                //   , 'success'
+                // )
+              }
+            });
+          });
+      
         </script>
     </body>
 </html>

@@ -127,11 +127,17 @@
         <td class="p-2">{{ $item->status }}</td>
         <td class="p-2">{{ $item->type }}</td>
         <td class="p-2">{{ formatDate($item->date_occurred) }}</td>
-        <td class="p-2">
+        <td class="p-2 flex item-center space-x-2">
           @auth
-          <button wire:click="verify({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-green-500 hover:bg-green-700 text-white">
+          @if ($item->status == 'unverified')
+          <button wire:click="confirmVerify({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-green-500 hover:bg-green-700 text-white">
             Verify
           </button>
+          @else
+          <button class="  rounded-full text-sm bg-gray-500 text-white cursor-not-allowed" disabled>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </button>
+          @endif
           <button wire:click="confirmDelete({{ $item->id }})" class="rounded px-2 py-1 text-sm bg-red-500 hover:bg-red-700 text-white">
             Delete
           </button>

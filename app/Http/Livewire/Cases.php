@@ -14,6 +14,7 @@ class Cases extends Component
 
     protected $listeners = [
         'deleteConfirm' => 'delete',
+        'verify' => 'verify',
     ];
 
     function add()
@@ -64,6 +65,7 @@ class Cases extends Component
             ]);
         }
     }
+
     public function confirmDelete($id)
     {
        
@@ -72,6 +74,16 @@ class Cases extends Component
         $this->delete = $id;
 
         $this->dispatchBrowserEvent('swal:confirm');
+    }
+
+    public function confirmVerify($id)
+    {
+       
+        $cases = Data::findOrFail($id);
+
+        $this->delete = $id;
+
+        $this->dispatchBrowserEvent('swal:confirmVerify');
     }
 
     public function delete()
@@ -86,6 +98,25 @@ class Cases extends Component
                 'icon' => 'success',
                 'text' => 'Case has deleted Successfully from abuse records',
                 'title' => 'Case Deleted',
+                'timer' => 4000,
+            ]);
+        }
+        $this->update = false;
+    }
+    public function verify()
+    {
+
+        $cases = Data::findOrFail($this->delete);
+
+        $true = $cases->update([
+            'status' => 'verified'
+        ]);
+
+        if ($true) {
+            $this->dispatchBrowserEvent('swal:success', [
+                'icon' => 'success',
+                'text' => 'Case marked confirmed and Verified',
+                'title' => 'Case Verified',
                 'timer' => 4000,
             ]);
         }
