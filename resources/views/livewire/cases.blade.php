@@ -104,7 +104,7 @@
   </div>
   <table class="w-full table my-4">
     <thead class="">
-      <tr class="w-full p-2 bg-purple-500 text-white">
+      <tr class="w-full p-2 bg-black text-white">
         <th class="p-2 text-left">No</th>
         <th class="p-2 text-left">Name</th>
         <th class="p-2 text-left">Age</th>
